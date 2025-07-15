@@ -533,7 +533,22 @@ function showNotification(message, type) {
     let particles = [];
     let mouse = { x: 0, y: 0, hovering: false };
     let dpr = window.devicePixelRatio || 1;
-    let colorAngle = 0;
+    let colorIndex = 0;
+    // Get theme colors from CSS variables
+    function getThemeColors() {
+        const styles = getComputedStyle(document.documentElement);
+        return [
+            styles.getPropertyValue('--primary-color').trim(),
+            styles.getPropertyValue('--secondary-color').trim(),
+            styles.getPropertyValue('--accent-color').trim()
+        ];
+    }
+    let themeColors = getThemeColors();
+    // Listen for theme changes (if any)
+    const observer = new MutationObserver(() => {
+        themeColors = getThemeColors();
+    });
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
 
     function resizeCanvas() {
         const rect = hero.getBoundingClientRect();
@@ -550,8 +565,18 @@ function showNotification(message, type) {
     }
 
     function createParticle(x, y) {
-        colorAngle = (colorAngle + 7) % 360;
-        const color = `hsla(${colorAngle}, 70%, 70%, 0.25)`;
+        // Cycle through theme colors for each particle
+        colorIndex = (colorIndex + 1) % themeColors.length;
+        const baseColor = themeColors[colorIndex];
+        // Add alpha for blending
+        const color = baseColor.replace(/#([0-9a-fA-F]{6})/, (m, hex) => {
+            // Convert hex to rgba
+            const bigint = parseInt(hex, 16);
+            const r = (bigint >> 16) & 255;
+            const g = (bigint >> 8) & 255;
+            const b = bigint & 255;
+            return `rgba(${r},${g},${b},0.22)`;
+        });
         return {
             x: x + randomBetween(-10, 10),
             y: y + randomBetween(-10, 10),
