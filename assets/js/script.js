@@ -335,7 +335,9 @@ function showNotification(message, type) {
             'assets/img/WTF-Dashboard/WTF-Dashboard-main2.png',
             'assets/img/WTF-Dashboard/WTF-Dashboard1.png',
             'assets/img/WTF-Dashboard/WTF-Dashboard2.png',
+            'assets/img/WTF-Dashboard/WTF-Dashboard3.png',
             'assets/img/WTF-Dashboard/WTF-Dashboard-mobile.png',
+            'assets/img/WTF-Dashboard/WTF-Dashboard-mobile2.png',
         ]
     };
 
