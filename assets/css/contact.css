@@ -1,0 +1,97 @@
+/* Contact Section - Platforms Display */
+.contact-platforms {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 3rem;
+    flex-wrap: wrap;
+}
+.contact-card {
+    background: var(--surface-color);
+    border-radius: 16px;
+    box-shadow:
+      4px 4px 16px var(--neu-shadow-dark),
+      -4px -4px 16px var(--neu-shadow-light),
+      inset 1.5px 1.5px 4px var(--neu-shadow-inner-dark),
+      inset -1.5px -1.5px 4px var(--neu-shadow-inner-light);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1.2rem;
+    transition: var(--transition);
+}
+.contact-card:hover {
+    box-shadow: 0 8px 32px rgba(37, 99, 235, 0.12);
+    border-color: var(--primary-color);
+    transform: translateY(-4px) scale(1.03);
+}
+.contact-icon {
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+    filter: none;
+}
+.contact-card.linkedin .contact-icon {
+    color: #0A66C2;
+}
+.contact-card.github .contact-icon {
+    color: #181717;
+}
+.contact-card.email .contact-icon {
+    color: #EA4335;
+}
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+.platform-name {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    letter-spacing: 0.02em;
+}
+.platform-username {
+    font-size: 1rem;
+    color: var(--text-color);
+    opacity: 0.85;
+    font-weight: 500;
+    word-break: break-all;
+}
+@media (max-width: 900px) {
+    .contact-platforms {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+    }
+    .contact-card {
+        min-width: 220px;
+        width: 100%;
+        max-width: 350px;
+        padding: 1rem 1.5rem;
+    }
+    .contact-icon {
+        width: 32px;
+        height: 32px;
+    }
+}
+@media (max-width: 480px) {
+    .contact-card {
+        min-width: 0;
+        max-width: 100%;
+        padding: 0.75rem 1rem;
+    }
+    .contact-icon {
+        width: 28px;
+        height: 28px;
+    }
+    .platform-name {
+        font-size: 1rem;
+    }
+    .platform-username {
+        font-size: 0.95rem;
+    }
+} 

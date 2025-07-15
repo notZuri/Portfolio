@@ -1,0 +1,108 @@
+/* Navbar styles */
+.navbar {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    background: var(--bg-color);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    z-index: 100;
+    transition: var(--transition);
+}
+.nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 0;
+}
+.nav-logo {
+    font-weight: 700;
+    font-size: 1.5rem;
+    text-decoration: none;
+    letter-spacing: 1px;
+}
+.nav-logo-img {
+    height: 2.2rem;
+    width: auto;
+    display: block;
+    margin: 0;
+    vertical-align: middle;
+}
+@media (max-width: 900px) {
+    .nav-logo-img {
+        height: 1.7rem;
+    }
+}
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+}
+.nav-links li a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+    padding: 0.5rem 0.75rem;
+    border-radius: 4px;
+    letter-spacing: 0.03em;
+}
+.nav-links li a:hover,
+.resume-btn:hover {
+    background: var(--primary-color);
+    color: var(--bg-color);
+}
+.resume-btn {
+    background: var(--primary-color);
+    color: var(--bg-color);
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: var(--transition);
+}
+.nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+.hamburger {
+    width: 25px;
+    height: 3px;
+    background: var(--primary-color);
+    display: block;
+    position: relative;
+}
+.hamburger::before,
+.hamburger::after {
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 3px;
+    background: var(--primary-color);
+    transition: var(--transition);
+}
+.hamburger::before { top: -8px; }
+.hamburger::after { top: 8px; }
+@media (max-width: 900px) {
+    .nav-links {
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background: var(--bg-color);
+        flex-direction: column;
+        width: 200px;
+        gap: 0;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        display: none;
+    }
+    .nav-links.open {
+        display: flex;
+    }
+    .nav-links li {
+        border-bottom: 1px solid var(--border-color);
+    }
+    .nav-toggle {
+        display: block;
+    }
+} 

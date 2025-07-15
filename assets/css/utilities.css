@@ -1,0 +1,43 @@
+/* Utility classes and animations */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1);
+}
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+.slide-in-left {
+    opacity: 0;
+    transform: translateX(-60px);
+    transition: opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1);
+}
+.slide-in-left.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+.slide-in-right {
+    opacity: 0;
+    transform: translateX(60px);
+    transition: opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1);
+}
+.slide-in-right.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+.cta-button:active,
+.about-button:active,
+.submit-button:active {
+    transform: scale(0.96);
+    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.10);
+}
+.contact-icon,
+.social-icon {
+    transition: transform 0.2s cubic-bezier(.4,0,.2,1), filter 0.2s;
+}
+.contact-icon:hover,
+.social-icon:hover {
+    transform: scale(1.18) rotate(-8deg);
+    filter: brightness(1.2) drop-shadow(0 2px 6px rgba(37,99,235,0.10));
+} 

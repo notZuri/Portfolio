@@ -1,0 +1,56 @@
+/* Base styles, variables, and typography */
+:root {
+    --primary-color: #2563eb;
+    --secondary-color: #64748b;
+    --accent-color: #38bdf8;
+    --bg-color: #ffffff;
+    --surface-color: #f1f5f9;
+    --text-color: #1e293b;
+    --border-color: #e2e8f0;
+    --shadow: 0 5px 15px rgba(37, 99, 235, 0.08);
+    --transition: all 0.3s ease;
+}
+[data-theme="dark"] {
+    --primary-color: #60a5fa;
+    --secondary-color: #94a3b8;
+    --accent-color: #22d3ee;
+    --bg-color: #181a20;
+    --surface-color: #23272f;
+    --text-color: #f3f4f6;
+    --border-color: #334155;
+    --shadow: 0 5px 15px rgba(96, 165, 250, 0.10);
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    overflow-x: hidden;
+}
+h1, h2, h3 {
+    margin-bottom: 1rem;
+    line-height: 1.2;
+    letter-spacing: 0.02em;
+}
+h1 {
+    font-size: 4rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+}
+h2 {
+    font-size: 2.75rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+}
+h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+} 

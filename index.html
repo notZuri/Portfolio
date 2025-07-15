@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ian Christian Amistoso - Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/base.css">
+    <link rel="stylesheet" href="assets/css/layout.css">
+    <link rel="stylesheet" href="assets/css/navbar.css">
+    <link rel="stylesheet" href="assets/css/hero.css">
+    <link rel="stylesheet" href="assets/css/about.css">
+    <link rel="stylesheet" href="assets/css/skills.css">
+    <link rel="stylesheet" href="assets/css/projects.css">
+    <link rel="stylesheet" href="assets/css/interests.css">
+    <link rel="stylesheet" href="assets/css/contact.css">
+    <link rel="stylesheet" href="assets/css/modal.css">
+    <link rel="stylesheet" href="assets/css/utilities.css">
+    <link rel="icon" href="assets/img/faviconportfolio.png" type="image/x-icon">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar" aria-label="Main Navigation">
+        <div class="container nav-container">
+            <a href="#hero" class="nav-logo" aria-label="Home">
+                <img src="assets/img/faviconportfolio.png" alt="Portfolio Logo" class="nav-logo-img">
+            </a>
+            <ul class="nav-links" role="menubar">
+                <li><a href="#about" role="menuitem">About</a></li>
+                <li><a href="#skills" role="menuitem">Skills</a></li>
+                <li><a href="#projects" role="menuitem">Projects</a></li>
+                <li><a href="#contact" role="menuitem">Contact</a></li>
+                <li><a href="assets/resume-placeholder.pdf" class="resume-btn" download aria-label="Download Resume">Resume</a></li>
+            </ul>
+            <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                <span class="hamburger"></span>
+            </button>
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+                <span class="theme-icon" aria-hidden="true">🌙</span>
+            </button>
+        </div>
+    </nav>
+    <!-- Hero Section -->
+    <header class="hero" id="hero">
+        <canvas id="smoke-canvas" style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:2;"></canvas>
+        <div class="hero-content">
+            <h1 class="fade-in">Ian Christian Amistoso</h1>
+            <p class="tagline fade-in">Frontend Web Developer</p>
+            <p class="subtitle fade-in">Crafting beautiful, responsive web experiences</p>
+            <div class="hero-stats fade-in">
+                <span>3+ Projects</span>
+                <span class="stat-divider">•</span>
+                <span>2+ Years Experience</span>
+                <span class="stat-divider">•</span>
+                <span>Always Learning</span>
+            </div>
+            <div class="hero-buttons">
+                <a href="#projects" class="cta-button fade-in">View My Work</a>
+                <a href="#contact" class="cta-button secondary fade-in">Get In Touch</a>
+            </div>
+        </div>
+    </header>
+    <!-- SVG Divider: Hero to About -->
+    <div class="section-divider">
+        <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+            <path d="M0,40 C480,120 960,0 1440,40 L1440,80 L0,80 Z" fill="var(--bg-color)"/>
+        </svg>
+    </div>
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <div class="about-image slide-in-left">
+                    <img src="assets/img/pic_portfolio.jpeg" alt="Ian Christian Amistoso" class="profile-image" loading="lazy">
+                </div>
+                <div class="about-text slide-in-right">
+                    <p class="lead-text">I'm a passionate frontend web developer with a keen eye for design and a love for creating seamless user experiences.</p>
+                    <p>Currently pursuing opportunities where I can contribute to innovative projects while continuing to grow my skills in modern web technologies. I believe in writing clean, maintainable code and creating interfaces that users love to interact with.</p>
+                    <div class="about-highlights">
+                        <div class="highlight-item">
+                            <span class="highlight-number">3+</span>
+                            <span class="highlight-label">Projects Completed</span>
+                        </div>
+                        <div class="highlight-item">
+                            <span class="highlight-number">2+</span>
+                            <span class="highlight-label">Years of Experience</span>
+                        </div>
+                        <div class="highlight-item">
+                            <span class="highlight-number">100%</span>
+                            <span class="highlight-label">Responsive Design</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Personal Interests Section -->
+    <section id="interests" class="interests">
+        <div class="container">
+            <h2>Personal Interests</h2>
+            <div class="interests-grid">
+                <div class="interest-card fade-in">
+                    <div class="interest-icon">🏋️‍♂️</div>
+                    <div class="interest-title">Gym</div>
+                    <div class="interest-desc">Training for discipline and consistency </div>
+                </div>
+                <div class="interest-card fade-in">
+                    <div class="interest-icon">📚</div>
+                    <div class="interest-title">Reading</div>
+                    <div class="interest-desc">Into self-help and mindset books</div>
+                </div>
+                <div class="interest-card fade-in">
+                    <div class="interest-icon">🧠</div>
+                    <div class="interest-title">Reflecting</div>
+                    <div class="interest-desc">Always thinking about growth, goals, and mindset</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- SVG Divider: About to Skills -->
+    <div class="section-divider">
+        <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+            <path d="M0,40 C480,0 960,120 1440,40 L1440,80 L0,80 Z" fill="var(--surface-color)"/>
+        </svg>
+    </div>
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2>Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-card fade-in slide-in-left">
+                    <div class="skill-progress">
+                        <div class="progress-bar" data-progress="90">
+                            <span class="progress-text">HTML5</span>
+                        </div>
+                    </div>
+                    <span>HTML5</span>
+                </div>
+                <div class="skill-card fade-in slide-in-left">
+                    <div class="skill-progress">
+                        <div class="progress-bar" data-progress="85">
+                            <span class="progress-text">CSS3</span>
+                        </div>
+                    </div>
+                    <span>CSS3</span>
+                </div>
+                <div class="skill-card fade-in slide-in-left">
+                    <div class="skill-progress">
+                        <div class="progress-bar" data-progress="80">
+                            <span class="progress-text">JavaScript</span>
+                        </div>
+                    </div>
+                    <span>JavaScript</span>
+                </div>
+                <div class="skill-card fade-in slide-in-left">
+                    <div class="skill-progress">
+                        <div class="progress-bar" data-progress="75">
+                            <span class="progress-text">Git</span>
+                        </div>
+                    </div>
+                    <span>Git</span>
+                </div>
+                <div class="skill-card fade-in slide-in-left">
+                    <div class="skill-progress">
+                        <div class="progress-bar" data-progress="85">
+                            <span class="progress-text">Responsive Design</span>
+                        </div>
+                    </div>
+                    <span>Responsive Design</span>
+                </div>
+                <div class="skill-card fade-in slide-in-left">
+                    <div class="skill-progress">
+                        <div class="progress-bar" data-progress="80">
+                            <span class="progress-text">UX Principles</span>
+                        </div>
+                    </div>
+                    <span>UX Principles</span>
+                </div>
+            </div>
+            <!-- Currently Learning Section -->
+            <div class="learning-section fade-in">
+                <h3>Currently Learning</h3>
+                <div class="learning-grid">
+                    <div class="learning-card">
+                        <div class="learning-icon">🚀</div>
+                        <h4>React.js</h4>
+                        <p>Building modern web applications</p>
+                        <div class="learning-progress">
+                            <div class="progress-bar" data-progress="60"></div>
+                        </div>
+                    </div>
+                    <div class="learning-card">
+                        <div class="learning-icon">⚡</div>
+                        <h4>Node.js</h4>
+                        <p>Server-side JavaScript</p>
+                        <div class="learning-progress">
+                            <div class="progress-bar" data-progress="45"></div>
+                        </div>
+                    </div>
+                    <div class="learning-card">
+                        <div class="learning-icon">🎨</div>
+                        <h4>UI/UX Design</h4>
+                        <p>Creating better user experiences</p>
+                        <div class="learning-progress">
+                            <div class="progress-bar" data-progress="70"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- SVG Divider: Skills to Projects -->
+    <div class="section-divider">
+        <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+            <path d="M0,40 C480,0 960,120 1440,40 L1440,80 L0,80 Z" fill="var(--bg-color)"/>
+        </svg>
+    </div>
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2>Featured Projects</h2>
+            <p class="section-subtitle">Here are some of my recent projects that showcase my skills and passion for web development.</p>
+            <div class="projects-grid">
+                <div class="project-card fade-in" 
+                    data-title="Shoepee"
+                    data-description="A fully responsive e-commerce platform for footwear retailers, featuring modern design and seamless user experience."
+                    data-image="assets/img/shoepeedesktop-mobile.png"
+                    data-tech="HTML5, CSS3, JavaScript, Responsive"
+                    data-features="Responsive Design, E-commerce Functionality, Modern UI/UX"
+                    data-demo="https://kickinshoes.netlify.app/index.html#hero"
+                    data-github="#">
+                    <div class="project-image-container">
+                        <img src="assets/img/shoepee/shoepee-main.png" alt="Shoepee E-commerce Project" loading="lazy">
+                        <div class="project-overlay">
+                            <div class="project-tech-stack">
+                                <span class="tech-tag">HTML5</span>
+                                <span class="tech-tag">CSS3</span>
+                                <span class="tech-tag">JavaScript</span>
+                                <span class="tech-tag">Responsive</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Shoepee</h3>
+                        <p class="project-description">A fully responsive e-commerce platform for footwear retailers, featuring modern design and seamless user experience.</p>
+                        <div class="project-features">
+                            <span class="feature-item">• Responsive Design</span>
+                            <span class="feature-item">• E-commerce Functionality</span>
+                            <span class="feature-item">• Modern UI/UX</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://shoepeee.netlify.app/" class="project-link live" target="_blank" rel="noopener">
+                                <span>🌐</span> Live Demo
+                            </a>
+                            <a href="https://github.com/notZuri/Shoepee" class="project-link github" target="_blank" rel="noopener">
+                                <svg class="github-icon" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                                </svg>
+                                GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card fade-in" 
+                    data-title="Attendance System"
+                    data-description="A comprehensive attendance management system with RFID integration for efficient tracking and reporting."
+                    data-image="assets/img/dsa.png"
+                    data-tech="HTML5, CSS3, JavaScript, PHP"
+                    data-features="RFID Integration, Real-time Tracking, Admin Dashboard"
+                    data-demo="#"
+                    data-github="#">
+                    <div class="project-image-container">
+                        <img src="assets/img/Attendance-System/AS-main.png" alt="Attendance System Project" loading="lazy">
+                        <div class="project-overlay">
+                            <div class="project-tech-stack">
+                                <span class="tech-tag">HTML5</span>
+                                <span class="tech-tag">CSS3</span>
+                                <span class="tech-tag">JavaScript</span>
+                                <span class="tech-tag">PHP</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Attendance System</h3>
+                        <p class="project-description">A comprehensive attendance management system with RFID integration for efficient tracking and reporting.</p>
+                        <div class="project-features">
+                            <span class="feature-item">• RFID Integration</span>
+                            <span class="feature-item">• Real-time Tracking</span>
+                            <span class="feature-item">• Admin Dashboard</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link live" target="_blank" rel="noopener">
+                                <span>🌐</span> Live Demo
+                            </a>
+                            <a href="#" class="project-link github" target="_blank" rel="noopener">
+                                <svg class="github-icon" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                                </svg>
+                                GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card fade-in" 
+                    data-title="WTF Dashboard"
+                    data-description="A modern, responsive web application that combines real-time weather forecasting with live news aggregation. Built with vanilla JavaScript and modern CSS, this dashboard demonstrates advanced front-end development skills including API integration, responsive design, and progressive web app features."
+                    data-image="assets/img/asd.png"
+                    data-tech="HTML5, CSS3, JavaScript, API"
+                    data-features="API Integration, Real-time Data, Dynamic Content"
+                    data-demo="#"
+                    data-github="#">
+                    <div class="project-image-container">
+                        <img src="assets/img/WTF-Dashboard/WTF-Dashboard-main.png" alt="WTF Dashboard Project" loading="lazy">
+                        <div class="project-overlay">
+                            <div class="project-tech-stack">
+                                <span class="tech-tag">HTML5</span>
+                                <span class="tech-tag">CSS3</span>
+                                <span class="tech-tag">JavaScript</span>
+                                <span class="tech-tag">API</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>WTF Dashboard</h3>
+                        <p class="project-description">A dynamic web application that integrates weather data and news feeds using external APIs for real-time information.</p>
+                        <div class="project-features">
+                            <span class="feature-item">• API Integration</span>
+                            <span class="feature-item">• Real-time Data</span>
+                            <span class="feature-item">• Dynamic Content</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://wtf-dashboard.netlify.app/" class="project-link live" target="_blank" rel="noopener">
+                                <span>🌐</span> Live Demo
+                            </a>
+                            <a href="https://github.com/notZuri/WTF-Dashboard?tab=readme-ov-file" class="project-link github" target="_blank" rel="noopener">
+                                <svg class="github-icon" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                                </svg>
+                                GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- SVG Divider: Projects to Contact -->
+    <div class="section-divider">
+        <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+            <path d="M0,40 C480,0 960,120 1440,40 L1440,80 L0,80 Z" fill="var(--surface-color)"/>
+        </svg>
+    </div>
+    <!-- Contact Section -->
+    <footer id="contact" class="contact">
+        <div class="container">
+            <h2>Contact Me</h2>
+            <div class="contact-platforms">
+                <div class="contact-card linkedin">
+                    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" alt="LinkedIn" class="contact-icon" loading="lazy">
+                    <div class="contact-info">
+                        <span class="platform-name">LinkedIn</span>
+                        <span class="platform-username">/your-linkedin-username</span>
+                    </div>
+                </div>
+                <div class="contact-card github">
+                    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg" alt="GitHub" class="contact-icon" loading="lazy">
+                    <div class="contact-info">
+                        <span class="platform-name">GitHub</span>
+                        <span class="platform-username">your-github-username</span>
+                    </div>
+                </div>
+                <div class="contact-card email">
+                    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/gmail.svg" alt="Email" class="contact-icon" loading="lazy">
+                    <div class="contact-info">
+                        <span class="platform-name">Email</span>
+                        <span class="platform-username">your.email@example.com</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <div id="project-modal" class="project-modal" aria-modal="true" role="dialog" tabindex="-1" style="display:none;">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Close project details">&times;</button>
+            <img class="modal-image" src="" alt="Project image" />
+            <h3 class="modal-title"></h3>
+            <p class="modal-description"></p>
+            <div class="modal-tech"></div>
+            <div class="modal-features"></div>
+            <div class="modal-links"></div>
+        </div>
+    </div>
+    <script src="assets/js/script.js"></script>
+</body>
+</html>
