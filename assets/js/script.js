@@ -326,6 +326,13 @@ function showNotification(message, type) {
             'assets/img/Attendance-System/AS-reports1.png',
             'assets/img/Attendance-System/AS-reports2.png',
             'assets/img/Attendance-System/AS-prof-profile.png',
+            'assets/img/Attendance-System/AS-student-home.png',
+            'assets/img/Attendance-System/AS-student-home2.png',
+            'assets/img/Attendance-System/AS-student-notification.png',
+            'assets/img/Attendance-System/AS-student-notification-mobile.png',
+            'assets/img/Attendance-System/AS-student-attendance.png',
+            'assets/img/Attendance-System/AS-student-profile.png',
+            'assets/img/Attendance-System/AS-student-profile2.png',
             
         
 
