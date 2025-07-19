@@ -31,19 +31,26 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Add typing effect to tagline
-    const tagline = document.querySelector('.tagline');
-    if (tagline) {
-        const text = tagline.textContent;
-        tagline.textContent = '';
+    // Typewriter effect for hero tagline
+    const heroTagline = document.querySelector('.hero-tagline');
+    if (heroTagline) {
+        const taglineText = heroTagline.getAttribute('data-type') || heroTagline.textContent;
+        heroTagline.textContent = '';
         let i = 0;
-        const typeWriter = () => {
-            if (i < text.length) {
-                tagline.textContent += text.charAt(i);
+        function typeWriter() {
+            if (i < taglineText.length) {
+                heroTagline.textContent += taglineText.charAt(i);
                 i++;
-                setTimeout(typeWriter, 100);
+                setTimeout(typeWriter, 60);
+            } else {
+                // Optional: pause, then reset and repeat
+                setTimeout(() => {
+                    heroTagline.textContent = '';
+                    i = 0;
+                    typeWriter();
+                }, 1800);
             }
-        };
+        }
         typeWriter();
     }
 
