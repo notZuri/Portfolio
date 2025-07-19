@@ -452,6 +452,9 @@ function showNotification(message, type) {
         desc.className = 'modal-description';
         desc.textContent = card.getAttribute('data-description') || '';
         // Tech tags
+        const techLabel = document.createElement('div');
+        techLabel.className = 'modal-tech-label';
+        techLabel.textContent = 'Technologies';
         const tech = document.createElement('div');
         tech.className = 'modal-tech';
         (card.getAttribute('data-tech') || '').split(',').forEach(t => {
@@ -462,17 +465,7 @@ function showNotification(message, type) {
                 tech.appendChild(tag);
             }
         });
-        // Features
-        const features = document.createElement('div');
-        features.className = 'modal-features';
-        (card.getAttribute('data-features') || '').split(',').forEach(f => {
-            if (f.trim()) {
-                const feat = document.createElement('span');
-                feat.className = 'feature-item';
-                feat.textContent = f.trim();
-                features.appendChild(feat);
-            }
-        });
+        // Remove features section (no longer needed)
         // Links
         const links = document.createElement('div');
         links.className = 'modal-links';
@@ -498,8 +491,9 @@ function showNotification(message, type) {
         }
         rightCol.appendChild(title);
         rightCol.appendChild(desc);
+        rightCol.appendChild(techLabel);
         rightCol.appendChild(tech);
-        rightCol.appendChild(features);
+        // No features appended
         rightCol.appendChild(links);
         // Add columns to modal
         modalContent.appendChild(leftCol);
