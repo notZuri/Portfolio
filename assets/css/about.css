@@ -126,3 +126,7 @@
       inset 1.5px 1.5px 4px var(--neu-shadow-inner-dark),
       inset -1.5px -1.5px 4px var(--neu-shadow-inner-light);
 } 
+
+.about, .skills, .projects, .contact {
+    background-color: var(--surface-color);
+} 

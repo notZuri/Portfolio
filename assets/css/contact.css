@@ -61,6 +61,9 @@
     font-weight: 500;
     word-break: break-all;
 }
+.contact {
+    background-color: var(--surface-color);
+}
 @media (max-width: 900px) {
     .contact-platforms {
         flex-direction: column;

@@ -1,7 +1,7 @@
 /* Skills Section styles */
 .skills {
     padding: 5rem 0;
-    background-color: var(--bg-color);
+    background-color: var(--surface-color);
 }
 .skills-grid {
     display: grid;

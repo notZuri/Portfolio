@@ -1,7 +1,7 @@
 /* Projects Section styles */
 .projects {
     padding: 5rem 0;
-    background-color: var(--bg-color);
+    background-color: var(--surface-color);
 }
 .section-subtitle {
     text-align: center;
