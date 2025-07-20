@@ -291,9 +291,9 @@ function showNotification(message, type) {
     if (!modal) return;
     const overlay = modal.querySelector('.modal-overlay');
     const closeBtn = modal.querySelector('.modal-close');
-    // Remove old content structure
     let leftCol = null;
     let rightCol = null;
+    let lastFocusedElement = null; // Track the opener for focus return
     // Carousel image lists for projects
     const projectCarousels = {
         'Shoepee': [
@@ -352,7 +352,15 @@ function showNotification(message, type) {
             'assets/img/WTF-Dashboard/WTF-Dashboard3.png',
             'assets/img/WTF-Dashboard/WTF-Dashboard-mobile.png',
             'assets/img/WTF-Dashboard/WTF-Dashboard-mobile2.png',
-        ]
+        ],
+        'Portfolio': [
+            'assets/img/Portfolio/portfolio-desktop-mobile1.png',
+            'assets/img/Portfolio/portfolio-desktop-mobile2.png',
+            'assets/img/Portfolio/portfolio-home.png',
+            'assets/img/Portfolio/portfolio-mobile1.png',
+            
+        ],
+
     };
 
     function createCarousel(images, projectTitle) {
@@ -420,6 +428,7 @@ function showNotification(message, type) {
     }
 
     function openModal(card) {
+        lastFocusedElement = document.activeElement;
         // Remove old columns if present
         if (leftCol) { leftCol.remove(); leftCol = null; }
         if (rightCol) { rightCol.remove(); rightCol = null; }
@@ -506,6 +515,7 @@ function showNotification(message, type) {
         modalContent.appendChild(leftCol);
         modalContent.appendChild(rightCol);
         modal.style.display = 'flex';
+        modal.removeAttribute('inert');
         modal.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = 'hidden';
         setTimeout(() => { modal.focus(); }, 10);
@@ -513,11 +523,19 @@ function showNotification(message, type) {
     function closeModal() {
         modal.style.display = 'none';
         modal.setAttribute('aria-hidden', 'true');
+        // Use inert if supported, fallback to tabindex="-1"
+        if ('inert' in modal) {
+            modal.inert = true;
+        } else {
+            modal.setAttribute('tabindex', '-1');
+        }
         document.body.style.overflow = '';
         if (leftCol) { leftCol.remove(); leftCol = null; }
         if (rightCol) { rightCol.remove(); rightCol = null; }
-        // The createCarousel function now handles its own carouselContainer and carouselIndicators
-        // So we don't need to remove them here.
+        // Return focus to the last focused element (opener)
+        if (lastFocusedElement && typeof lastFocusedElement.focus === 'function') {
+            lastFocusedElement.focus();
+        }
     }
     document.querySelectorAll('.project-card').forEach(card => {
         card.addEventListener('click', function(e) {
@@ -530,6 +548,11 @@ function showNotification(message, type) {
     document.addEventListener('keydown', function(e) {
         if (modal.style.display !== 'none' && (e.key === 'Escape' || e.key === 'Esc')) closeModal();
     });
+    // Remove inert and tabindex when modal is shown
+    if (modal.style.display !== 'none') {
+        modal.removeAttribute('inert');
+        modal.removeAttribute('tabindex');
+    }
 })();
 
 // --- Smoke Effect for Hero Section ---

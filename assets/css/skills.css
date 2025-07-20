@@ -93,13 +93,13 @@
 .learning-section {
     margin-top: 4rem;
     padding-top: 2rem;
-    border-top: 1px solid var(--border-color);
 }
 .learning-section h3 {
     text-align: center;
     margin-bottom: 2rem;
     color: var(--text-color);
     font-size: 1.8rem;
+    font-weight: 700;
 }
 .learning-grid {
     display: grid;
