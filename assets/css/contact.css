@@ -60,6 +60,13 @@
     opacity: 0.85;
     font-weight: 500;
     word-break: break-all;
+    text-decoration: none;
+    color: inherit;
+    transition: text-decoration 0.2s, color 0.2s;
+}
+.platform-username:hover, .platform-username:focus {
+    text-decoration: underline;
+    color: var(--primary-color);
 }
 .contact {
     background-color: var(--surface-color);
