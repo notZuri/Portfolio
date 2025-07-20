@@ -1,6 +1,6 @@
 /* About Section styles */
 .about {
-    padding: 5rem 0;
+    padding: 5rem 0 2rem 0;
     background-color: var(--surface-color);
 }
 .about-content {
@@ -132,6 +132,9 @@
 } 
 
 @media (max-width: 600px) {
+  .about {
+    padding: 3rem 0 3rem 0;
+  }
   .about-content {
     display: flex;
     flex-direction: column;

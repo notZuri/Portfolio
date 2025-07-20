@@ -1,6 +1,6 @@
 /* Personal Interests Section */
 .interests {
-    padding: 5rem 0 3rem 0;
+    padding: 2rem 0 3rem 0;
     background: var(--surface-color);
 }
 .interests h2 {
@@ -57,7 +57,7 @@
 }
 @media (max-width: 600px) {
     .interests {
-        padding: 3rem 0 2rem 0;
+        padding: 1.5rem 0 2rem 0;
     }
     .interests-grid {
         gap: 1.2rem;

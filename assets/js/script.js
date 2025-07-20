@@ -209,6 +209,58 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 4000);
         });
     }
+
+    // Counting animation for About Me highlights
+    const aboutSection = document.querySelector('.about');
+    const highlightNumbers = document.querySelectorAll('.about-highlights .highlight-number');
+    function animateCount(el, targetStr, duration = 1500) {
+        // Extract number and suffix (e.g., 1000+)
+        const match = targetStr.match(/([\d,]+)/);
+        if (!match) return;
+        const number = parseInt(match[1].replace(/,/g, ''));
+        const suffix = targetStr.replace(match[1], '');
+        let start = 0;
+        const startTime = performance.now();
+        function update(now) {
+            const elapsed = now - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            const current = Math.floor(progress * number);
+            el.textContent = current.toLocaleString() + suffix;
+            if (progress < 1) {
+                requestAnimationFrame(update);
+            } else {
+                el.textContent = number.toLocaleString() + suffix;
+            }
+        }
+        requestAnimationFrame(update);
+    }
+    if (aboutSection && highlightNumbers.length) {
+        const aboutObserver = new IntersectionObserver((entries, obs) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    highlightNumbers.forEach(numberEl => {
+                        const valueEl = numberEl.querySelector('.highlight-value');
+                        if (valueEl) {
+                            const targetStr = valueEl.getAttribute('data-count');
+                            animateCount(valueEl, targetStr);
+                        }
+                    });
+                } else {
+                    // Reset numbers to 0+ or 0 (with suffix) using data-count
+                    highlightNumbers.forEach(numberEl => {
+                        const valueEl = numberEl.querySelector('.highlight-value');
+                        if (valueEl) {
+                            const targetStr = valueEl.getAttribute('data-count');
+                            const match = targetStr.match(/([\d,]+)/);
+                            const suffix = match ? targetStr.replace(match[1], '') : '';
+                            valueEl.textContent = '0' + suffix;
+                        }
+                    });
+                }
+            });
+        }, { threshold: 0.4 });
+        aboutObserver.observe(aboutSection);
+    }
 });
 
 // Section reveal on scroll
