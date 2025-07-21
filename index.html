@@ -3,11 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ian Christian Amistoso - Portfolio</title>
+    <title>Ian Christian Amistoso - Frontend Developer & QA | Portfolio</title>
+    <meta name="description" content="Portfolio of Ian Christian Amistoso, aspiring IT professional, frontend developer, and QA enthusiast. Explore projects, skills, and contact information.">
+    <meta name="keywords" content="Ian Christian Amistoso, frontend developer, QA, portfolio, web developer, JavaScript, HTML, CSS, IT, internship, projects, skills">
+    <meta name="author" content="Ian Christian Amistoso">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:title" content="Ian Christian Amistoso - Frontend Developer & QA | Portfolio">
+    <meta property="og:description" content="Portfolio of Ian Christian Amistoso, aspiring IT professional, frontend developer, and QA enthusiast. Explore projects, skills, and contact information.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://notzuri.github.io/Portfolio/">
+    <meta property="og:image" content="https://notzuri.github.io/Portfolio/assets/img/faviconportfolio.png">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Ian Christian Amistoso - Frontend Developer & QA | Portfolio">
+    <meta name="twitter:description" content="Portfolio of Ian Christian Amistoso, aspiring IT professional, frontend developer, and QA enthusiast. Explore projects, skills, and contact information.">
+    <meta name="twitter:image" content="https://notzuri.github.io/Portfolio/assets/img/faviconportfolio.png">
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Ian Christian Amistoso",
+      "url": "https://notzuri.github.io/Portfolio/",
+      "image": "https://notzuri.github.io/Portfolio/assets/img/pic_portfolio.jpeg",
+      "sameAs": [
+        "https://www.linkedin.com/in/ian-christian-amistoso-820401373/",
+        "https://github.com/notZuri"
+      ],
+      "jobTitle": "Frontend Developer, QA Enthusiast",
+      "description": "Aspiring IT professional with hands-on experience in frontend development and manual QA testing."
+    }
+    </script>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/base.css">
+    <!-- Preload main font and base.css -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" as="style" onload="this.rel='stylesheet'">
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    </noscript>
+    <link rel="preload" href="assets/css/base.css" as="style" onload="this.rel='stylesheet'">
+    <noscript>
+      <link rel="stylesheet" href="assets/css/base.css">
+    </noscript>
     <link rel="stylesheet" href="assets/css/layout.css">
     <link rel="stylesheet" href="assets/css/navbar.css">
     <link rel="stylesheet" href="assets/css/hero.css">
@@ -25,7 +67,7 @@
     <nav class="navbar" aria-label="Main Navigation">
         <div class="container nav-container">
             <a href="#hero" class="nav-logo" aria-label="Home">
-                <img src="assets/img/faviconportfolio.png" alt="Portfolio Logo" class="nav-logo-img">
+                <img src="assets/img/faviconportfolio.png" alt="Portfolio Logo" class="nav-logo-img" loading="lazy" decoding="async">
             </a>
             <ul class="nav-links" role="menubar">
                 <li><a href="#about" role="menuitem">About</a></li>
@@ -67,7 +109,7 @@
             <h2>About Me</h2>
             <div class="about-content">
                 <div class="about-image slide-in-left">
-                    <img src="assets/img/pic_portfolio.jpeg" alt="Ian Christian Amistoso" class="profile-image" loading="lazy">
+                    <img src="assets/img/pic_portfolio.jpeg" alt="Ian Christian Amistoso" class="profile-image" loading="lazy" decoding="async">
                 </div>
                 <div class="about-text slide-in-right">
                     <p class="lead-text">I'm an aspiring IT professional with hands-on experience in frontend development and manual QA testing. I enjoy building responsive, user-friendly websites and thoroughly testing digital systems to ensure they meet real-world functionality and reliability standards.</p>
@@ -172,6 +214,14 @@
                     </div>
                     <span>UX Principles</span>
                 </div>
+                <div class="skill-card fade-in slide-in-left">
+                    <div class="skill-progress">
+                        <div class="progress-bar" data-progress="80">
+                            <span class="progress-text">Testing & Debugging</span>
+                        </div>
+                    </div>
+                    <span>Testing & Debugging</span>
+                </div>
             </div>
             <!-- Currently Learning Section -->
             <div class="learning-section fade-in">
@@ -225,7 +275,7 @@
                     data-demo="http://zuri.mygamesonline.org/"
                     data-github="https://github.com/notZuri/attendance-system?tab=readme-ov-file">
                     <div class="project-image-container">
-                        <img src="assets/img/Attendance-System/AS-main.png" alt="Attendance System Project" loading="lazy">
+                        <img src="assets/img/Attendance-System/AS-main.png" alt="Attendance System Project" loading="lazy" decoding="async">
                         <div class="project-overlay">
                             <div class="project-tech-stack">
                                 <span class="tech-tag">HTML5</span>
@@ -268,7 +318,7 @@
                     data-demo="https://wtf-dashboard.netlify.app/"
                     data-github="https://github.com/notZuri/WTF-Dashboard?tab=readme-ov-file">
                     <div class="project-image-container">
-                        <img src="assets/img/WTF-Dashboard/WTF-Dashboard-main.png" alt="WTF Dashboard Project" loading="lazy">
+                        <img src="assets/img/WTF-Dashboard/WTF-Dashboard-main.png" alt="WTF Dashboard Project" loading="lazy" decoding="async">
                         <div class="project-overlay">
                             <div class="project-tech-stack">
                                 <span class="tech-tag">HTML5</span>
@@ -312,7 +362,7 @@
                 data-demo="https://shoepeee.netlify.app/"
                 data-github="https://github.com/notZuri/Shoepee">
                 <div class="project-image-container">
-                    <img src="assets/img/shoepee/shoepee-main.png" alt="Shoepee E-commerce Project" loading="lazy">
+                    <img src="assets/img/shoepee/shoepee-main.png" alt="Shoepee E-commerce Project" loading="lazy" decoding="async">
                     <div class="project-overlay">
                         <div class="project-tech-stack">
                             <span class="tech-tag">HTML5</span>
@@ -354,7 +404,7 @@
                 data-demo="https://shoepeee.netlify.app/"
                 data-github="https://github.com/notZuri/Shoepee">
                 <div class="project-image-container">
-                    <img src="assets/img/Portfolio/portfolio-desktop-mobile1.png" alt="Portfolio Website Project" loading="lazy">
+                    <img src="assets/img/Portfolio/portfolio-desktop-mobile1.png" alt="Portfolio Website Project" loading="lazy" decoding="async">
                     <div class="project-overlay">
                         <div class="project-tech-stack">
                             <span class="tech-tag">HTML5</span>
@@ -399,21 +449,21 @@
             <h2>Let's Connect💬</h2>
             <div class="contact-platforms">
                 <div class="contact-card linkedin">
-                    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" alt="LinkedIn" class="contact-icon" loading="lazy">
+                    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" alt="LinkedIn" class="contact-icon" loading="lazy" decoding="async">
                     <div class="contact-info">
                         <span class="platform-name">LinkedIn</span>
                         <a class="platform-username" href="https://www.linkedin.com/in/ian-christian-amistoso-820401373/" target="_blank" rel="noopener">Ian Christian Amistoso</a>
                     </div>
                 </div>
                 <div class="contact-card github">
-                    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg" alt="GitHub" class="contact-icon" loading="lazy">
+                    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg" alt="GitHub" class="contact-icon" loading="lazy" decoding="async">
                     <div class="contact-info">
                         <span class="platform-name">GitHub</span>
                         <a class="platform-username" href="https://github.com/notZuri" target="_blank" rel="noopener">/notZuri</a>
                     </div>
                 </div>
                 <div class="contact-card email">
-                    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/gmail.svg" alt="Email" class="contact-icon" loading="lazy">
+                    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/gmail.svg" alt="Email" class="contact-icon" loading="lazy" decoding="async">
                     <div class="contact-info">
                         <span class="platform-name">Email</span>
                         <a class="platform-username" href="https://mail.google.com/mail/?view=cm&to=ianamistoso27@gmail.com&subject=Internship%20Inquiry&body=Hi%20Ian%2C%0D%0A%0D%0AI%20came%20across%20your%20portfolio%20and%20wanted%20to%20reach%20out%20regarding%20an%20internship%20opportunity.%20Looking%20forward%20to%20hearing%20from%20you!%0D%0A%0D%0ABest%2C%0D%0A%5BYour%20Name%5D" target="_blank">

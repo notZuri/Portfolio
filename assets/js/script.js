@@ -417,13 +417,14 @@ function showNotification(message, type) {
 
     function createCarousel(images, projectTitle) {
         let carouselIndex = 0;
+        // let isAnimating = false; // Remove lock for rapid navigation
         const carouselContainer = document.createElement('div');
         carouselContainer.className = 'modal-carousel';
         images.forEach((src, i) => {
             const image = document.createElement('img');
             image.src = src;
             image.alt = projectTitle + ' screenshot ' + (i+1);
-            image.className = 'carousel-image';
+            image.className = 'carousel-image' + (i === 0 ? ' active' : '');
             image.style.display = i === 0 ? 'block' : 'none';
             carouselContainer.appendChild(image);
         });
@@ -435,47 +436,123 @@ function showNotification(message, type) {
         nextBtn.innerHTML = '&#10095;';
         carouselContainer.appendChild(prevBtn);
         carouselContainer.appendChild(nextBtn);
-        
         // Add page counter
         const pageCounter = document.createElement('div');
         pageCounter.className = 'carousel-counter';
         pageCounter.textContent = `1 / ${images.length}`;
         carouselContainer.appendChild(pageCounter);
-        
         const carouselIndicators = document.createElement('div');
         carouselIndicators.className = 'carousel-indicators';
         images.forEach((_, i) => {
             const dot = document.createElement('span');
             dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
             dot.addEventListener('click', () => {
-                carouselIndex = i;
-                showCarouselImage();
+                animateToIndex(i);
             });
             carouselIndicators.appendChild(dot);
         });
-        function showCarouselImage() {
+        function clearAnimationClasses(imgs) {
+            imgs.forEach(img => {
+                img.classList.remove('slide-in-left', 'slide-in-right');
+            });
+        }
+        let queuedIndex = null;
+        function animateToIndex(newIndex) {
+            if (newIndex === carouselIndex) return;
             const imgs = carouselContainer.querySelectorAll('.carousel-image');
+            // If an animation is in progress, queue the last requested index
+            if (carouselContainer._isAnimating) {
+                queuedIndex = newIndex;
+                return;
+            }
+            carouselContainer._isAnimating = true;
+            // Remove all animation classes and force reflow
+            imgs.forEach((img, i) => {
+                img.classList.remove('from-left', 'from-right', 'to-left', 'to-right', 'active');
+                void img.offsetWidth;
+            });
+            const direction = newIndex > carouselIndex ? 'left' : 'right';
+            const outgoing = imgs[carouselIndex];
+            const incoming = imgs[newIndex];
+            // Set up initial state for incoming image
+            incoming.style.display = 'block';
+            incoming.classList.add(direction === 'left' ? 'from-right' : 'from-left');
+            // Force reflow to apply initial transform
+            void incoming.offsetWidth;
+            // Start transition
+            requestAnimationFrame(() => {
+                outgoing.classList.add(direction === 'left' ? 'to-left' : 'to-right');
+                outgoing.classList.remove('active');
+                incoming.classList.remove('from-left', 'from-right');
+                incoming.classList.add('active');
+            });
+            // After transition, clean up classes and hide outgoing image
+            setTimeout(() => {
+                imgs.forEach((img, i) => {
+                    img.classList.remove('from-left', 'from-right', 'to-left', 'to-right');
+                    img.style.display = i === newIndex ? 'block' : 'none';
+                    if (i === newIndex) img.classList.add('active');
+                    else img.classList.remove('active');
+                });
+                prevBtn.style.display = 'flex';
+                nextBtn.style.display = 'flex';
+                prevBtn.style.zIndex = 10;
+                nextBtn.style.zIndex = 10;
+                carouselContainer._isAnimating = false;
+                if (queuedIndex !== null && queuedIndex !== newIndex) {
+                    const nextQueued = queuedIndex;
+                    queuedIndex = null;
+                    animateToIndex(nextQueued);
+                }
+            }, 400);
+            carouselIndex = newIndex;
+            updateIndicators();
+        }
+        function showCarouselImage(direction) {
+            const imgs = carouselContainer.querySelectorAll('.carousel-image');
+            clearAnimationClasses(imgs);
             imgs.forEach((img, i) => {
                 img.style.display = i === carouselIndex ? 'block' : 'none';
             });
+            if (typeof direction === 'string') {
+                imgs[carouselIndex].classList.add(direction === 'left' ? 'slide-in-left' : 'slide-in-right');
+                setTimeout(() => {
+                    imgs[carouselIndex].classList.remove('slide-in-left', 'slide-in-right');
+                }, 500);
+            }
+            updateIndicators();
+        }
+        function updateIndicators() {
             const dots = carouselIndicators.querySelectorAll('.carousel-dot');
             dots.forEach((dot, i) => {
                 dot.classList.toggle('active', i === carouselIndex);
             });
-            // Update page counter
             const counter = carouselContainer.querySelector('.carousel-counter');
             if (counter) {
                 counter.textContent = `${carouselIndex + 1} / ${images.length}`;
             }
         }
         prevBtn.onclick = () => {
-            carouselIndex = (carouselIndex - 1 + images.length) % images.length;
-            showCarouselImage();
+            const newIndex = (carouselIndex - 1 + images.length) % images.length;
+            animateToIndex(newIndex);
         };
         nextBtn.onclick = () => {
-            carouselIndex = (carouselIndex + 1) % images.length;
-            showCarouselImage();
+            const newIndex = (carouselIndex + 1) % images.length;
+            animateToIndex(newIndex);
         };
+        // Keyboard navigation
+        carouselContainer.setAttribute('tabindex', '0');
+        carouselContainer.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowLeft') {
+                prevBtn.click();
+            } else if (e.key === 'ArrowRight') {
+                nextBtn.click();
+            }
+        });
+        // Focus is now handled in openModal to avoid conflicts
+        // setTimeout(() => { carouselContainer.focus(); }, 100);
+        prevBtn.style.display = 'flex';
+        nextBtn.style.display = 'flex';
         return { carouselContainer, carouselIndicators, showCarouselImage };
     }
 
@@ -571,6 +648,37 @@ function showNotification(message, type) {
         modal.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = 'hidden';
         setTimeout(() => { modal.focus(); }, 10);
+        // Focus trap logic
+        setTimeout(() => {
+            const focusableSelectors = 'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, [tabindex]:not([tabindex="-1"]), [contenteditable]';
+            const modalContent = modal.querySelector('.modal-content');
+            const focusableEls = Array.from(modalContent.querySelectorAll(focusableSelectors)).filter(el => el.offsetParent !== null);
+            // Prioritize focusing the carousel for immediate arrow key navigation
+            const carouselContainer = modal.querySelector('.modal-carousel');
+            if (carouselContainer) {
+                carouselContainer.focus();
+            } else if (focusableEls.length) {
+                focusableEls[0].focus();
+            }
+            function trapFocus(e) {
+                if (e.key !== 'Tab') return;
+                const firstEl = focusableEls[0];
+                const lastEl = focusableEls[focusableEls.length - 1];
+                if (e.shiftKey) {
+                    if (document.activeElement === firstEl) {
+                        e.preventDefault();
+                        lastEl.focus();
+                    }
+                } else {
+                    if (document.activeElement === lastEl) {
+                        e.preventDefault();
+                        firstEl.focus();
+                    }
+                }
+            }
+            modal.addEventListener('keydown', trapFocus);
+            modal._trapFocusHandler = trapFocus;
+        }, 100);
     }
     function closeModal() {
         modal.style.display = 'none';
@@ -587,6 +695,11 @@ function showNotification(message, type) {
         // Return focus to the last focused element (opener)
         if (lastFocusedElement && typeof lastFocusedElement.focus === 'function') {
             lastFocusedElement.focus();
+        }
+        // Remove focus trap
+        if (modal._trapFocusHandler) {
+            modal.removeEventListener('keydown', modal._trapFocusHandler);
+            delete modal._trapFocusHandler;
         }
     }
     document.querySelectorAll('.project-card').forEach(card => {
