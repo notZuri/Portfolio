@@ -47,6 +47,10 @@
     gap: 2rem;
     list-style: none;
 }
+.nav-links li {
+    display: flex;
+    align-items: center;
+}
 .nav-links li a {
     color: var(--text-color);
     text-decoration: none;
@@ -61,7 +65,7 @@
     background: var(--primary-color);
     color: var(--bg-color);
 }
-.resume-btn {
+.resume-btn, .nav-links .resume-btn {
     background: var(--primary-color);
     color: var(--bg-color);
     padding: 0.5rem 1rem;
@@ -69,6 +73,27 @@
     font-weight: 600;
     text-decoration: none;
     transition: var(--transition);
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 1rem;
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 1.2;
+}
+.resume-btn:hover, .resume-btn:focus {
+    background: var(--bg-color);
+    color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 2px var(--primary-color);
+}
+[data-theme="dark"] .resume-btn, [data-theme="dark"] .nav-links .resume-btn {
+    background: var(--accent-color);
+    color: var(--primary-color);
+}
+[data-theme="dark"] .resume-btn:hover, [data-theme="dark"] .resume-btn:focus {
+    background: var(--primary-color);
+    color: var(--bg-color);
 }
 .nav-toggle {
     display: none;

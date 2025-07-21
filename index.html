@@ -74,7 +74,7 @@
                 <li><a href="#skills" role="menuitem">Skills</a></li>
                 <li><a href="#projects" role="menuitem">Projects</a></li>
                 <li><a href="#contact" role="menuitem">Contact</a></li>
-                <li><a href="assets/resume-placeholder.pdf" class="resume-btn" download aria-label="Download Resume">Resume</a></li>
+                <li><button class="resume-btn" aria-label="Open Resume Modal" type="button">Resume</button></li>
             </ul>
             <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
                 <span class="hamburger"></span>
@@ -209,10 +209,10 @@
                 <div class="skill-card fade-in slide-in-left">
                     <div class="skill-progress">
                         <div class="progress-bar" data-progress="80">
-                            <span class="progress-text">UX Principles</span>
+                            <span class="progress-text">Basic UI/UX Principles</span>
                         </div>
                     </div>
-                    <span>UX Principles</span>
+                    <span>Basic UI/UX Principles</span>
                 </div>
                 <div class="skill-card fade-in slide-in-left">
                     <div class="skill-progress">
@@ -226,29 +226,21 @@
             <!-- Currently Learning Section -->
             <div class="learning-section fade-in">
                 <h3>Currently Learning</h3>
-                <div class="learning-grid">
-                    <div class="learning-card">
-                        <div class="learning-icon">🚀</div>
-                        <h4>React.js</h4>
-                        <p>Building modern web applications</p>
-                        <div class="learning-progress">
-                            <div class="progress-bar" data-progress="60"></div>
-                        </div>
-                    </div>
-                    <div class="learning-card">
-                        <div class="learning-icon">⚡</div>
-                        <h4>Node.js</h4>
-                        <p>Server-side JavaScript</p>
-                        <div class="learning-progress">
-                            <div class="progress-bar" data-progress="45"></div>
-                        </div>
-                    </div>
+                <div class="learning-grid">                  
                     <div class="learning-card">
                         <div class="learning-icon">🎨</div>
                         <h4>UI/UX Design</h4>
                         <p>Creating better user experiences</p>
                         <div class="learning-progress">
-                            <div class="progress-bar" data-progress="70"></div>
+                            <div class="progress-bar" data-progress="42"></div>
+                        </div>
+                    </div>
+                    <div class="learning-card">
+                        <div class="learning-icon">🚀</div>
+                        <h4>React.js</h4>
+                        <p>Building modern web applications</p>
+                        <div class="learning-progress">
+                            <div class="progress-bar" data-progress="10"></div>
                         </div>
                     </div>
                 </div>
@@ -483,6 +475,19 @@
             <p class="modal-description"></p>
             <div class="modal-tech"></div>
             <div class="modal-links"></div>
+        </div>
+    </div>
+    <div id="resume-modal" class="resume-modal" aria-modal="true" role="dialog" tabindex="-1" style="display:none;">
+        <div class="resume-modal-overlay"></div>
+        <div class="resume-modal-content">
+            <button class="resume-modal-close" aria-label="Close resume modal">&times;</button>
+            <h2 class="resume-modal-title">Choose a Resume</h2>
+            <p class="resume-modal-desc">I tailor my resume for specific IT roles. Please select the version that best fits what you're looking for.</p>
+            <div class="resume-modal-buttons">
+                <a href="https://example.com/frontend-resume.pdf" class="resume-btn-option" target="_blank" rel="noopener">📱 Frontend Developer</a>
+                <a href="https://example.com/qa-resume.pdf" class="resume-btn-option" target="_blank" rel="noopener">🧪 QA Tester</a>
+                <a href="https://example.com/general-it-resume.pdf" class="resume-btn-option" target="_blank" rel="noopener">🖥️ General IT / Tech Support</a>
+            </div>
         </div>
     </div>
     <script src="assets/js/script.js"></script>

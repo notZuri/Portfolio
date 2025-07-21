@@ -720,6 +720,76 @@ function showNotification(message, type) {
     }
 })();
 
+// Resume Modal Logic
+(function() {
+    const resumeModal = document.getElementById('resume-modal');
+    const resumeBtn = document.querySelector('.resume-btn');
+    const closeBtn = resumeModal ? resumeModal.querySelector('.resume-modal-close') : null;
+    const overlay = resumeModal ? resumeModal.querySelector('.resume-modal-overlay') : null;
+    function openResumeModal() {
+        if (!resumeModal) return;
+        resumeModal.style.display = 'flex';
+        resumeModal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        // Focus trap
+        setTimeout(() => {
+            const focusableSelectors = 'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, [tabindex]:not([tabindex="-1"]), [contenteditable]';
+            const modalContent = resumeModal.querySelector('.resume-modal-content');
+            const focusableEls = Array.from(modalContent.querySelectorAll(focusableSelectors)).filter(el => el.offsetParent !== null);
+            if (focusableEls.length) {
+                focusableEls[0].focus();
+            }
+            function trapFocus(e) {
+                if (e.key !== 'Tab') return;
+                const firstEl = focusableEls[0];
+                const lastEl = focusableEls[focusableEls.length - 1];
+                if (e.shiftKey) {
+                    if (document.activeElement === firstEl) {
+                        e.preventDefault();
+                        lastEl.focus();
+                    }
+                } else {
+                    if (document.activeElement === lastEl) {
+                        e.preventDefault();
+                        firstEl.focus();
+                    }
+                }
+            }
+            resumeModal.addEventListener('keydown', trapFocus);
+            resumeModal._trapFocusHandler = trapFocus;
+        }, 100);
+    }
+    function closeResumeModal() {
+        if (!resumeModal) return;
+        resumeModal.style.display = 'none';
+        resumeModal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        // Remove focus trap
+        if (resumeModal._trapFocusHandler) {
+            resumeModal.removeEventListener('keydown', resumeModal._trapFocusHandler);
+            delete resumeModal._trapFocusHandler;
+        }
+    }
+    if (resumeBtn) {
+        resumeBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            openResumeModal();
+        });
+    }
+    if (closeBtn) {
+        closeBtn.addEventListener('click', closeResumeModal);
+    }
+    if (overlay) {
+        overlay.addEventListener('click', closeResumeModal);
+    }
+    // ESC key closes modal
+    document.addEventListener('keydown', function(e) {
+        if (resumeModal && resumeModal.style.display !== 'none' && (e.key === 'Escape' || e.key === 'Esc')) {
+            closeResumeModal();
+        }
+    });
+})();
+
 // --- Smoke Effect for Hero Section ---
 (function() {
     const hero = document.getElementById('hero');
