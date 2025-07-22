@@ -410,7 +410,12 @@ function showNotification(message, type) {
             'assets/img/Portfolio/portfolio-desktop-mobile2.png',
             'assets/img/Portfolio/portfolio-home.png',
             'assets/img/Portfolio/portfolio-mobile1.png',
-            
+            'assets/img/Portfolio/portfolio-home-darkmode.png',
+            'assets/img/Portfolio/portfolio-about.png',
+            'assets/img/Portfolio/portfolio-skills.png',
+            'assets/img/Portfolio/portfolio-projects.png',
+            'assets/img/Portfolio/portfolio-projects-modal.png',
+            'assets/img/Portfolio/portfolio-contact.png',
         ],
 
     };
