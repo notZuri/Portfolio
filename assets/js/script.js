@@ -899,3 +899,144 @@ function showNotification(message, type) {
     resizeCanvas();
     animate();
 })();
+
+// OJT Project Carousel
+(function() {
+    const carousel = document.querySelector('.ojt-project-carousel');
+    if (!carousel) return;
+    
+    const images = carousel.querySelectorAll('.ojt-carousel-image');
+    const prevBtn = carousel.querySelector('.ojt-carousel-prev');
+    const nextBtn = carousel.querySelector('.ojt-carousel-next');
+    const dots = carousel.querySelectorAll('.ojt-carousel-dot');
+    const counter = carousel.querySelector('.ojt-carousel-counter');
+    
+    let currentIndex = 0;
+    const totalImages = images.length;
+    
+    function updateCarousel() {
+        images.forEach((img, index) => {
+            img.classList.toggle('active', index === currentIndex);
+        });
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentIndex);
+        });
+        if (counter) {
+            counter.textContent = `${currentIndex + 1} / ${totalImages}`;
+        }
+    }
+    
+    function nextImage() {
+        currentIndex = (currentIndex + 1) % totalImages;
+        updateCarousel();
+    }
+    
+    function prevImage() {
+        currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+        updateCarousel();
+    }
+    
+    function goToImage(index) {
+        currentIndex = index;
+        updateCarousel();
+    }
+    
+    if (nextBtn) nextBtn.addEventListener('click', nextImage);
+    if (prevBtn) prevBtn.addEventListener('click', prevImage);
+    
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => goToImage(index));
+    });
+    
+    // Keyboard navigation
+    carousel.setAttribute('tabindex', '0');
+    carousel.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') prevImage();
+        if (e.key === 'ArrowRight') nextImage();
+    });
+    
+    // Auto-play (optional - can be removed if not needed)
+    // let autoPlayInterval = setInterval(nextImage, 5000);
+    // carousel.addEventListener('mouseenter', () => clearInterval(autoPlayInterval));
+    // carousel.addEventListener('mouseleave', () => {
+    //     autoPlayInterval = setInterval(nextImage, 5000);
+    // });
+})();
+
+// OJT Gallery Carousel (Auto-playing)
+(function() {
+    const galleryCarousel = document.querySelector('.ojt-gallery-carousel');
+    if (!galleryCarousel) return;
+    
+    const images = galleryCarousel.querySelectorAll('.ojt-gallery-carousel-image');
+    const dots = galleryCarousel.querySelectorAll('.ojt-gallery-carousel-dot');
+    
+    let currentIndex = 0;
+    const totalImages = images.length;
+    let autoPlayInterval = null;
+    const pauseDuration = 2500; // 2.5 seconds pause between slides
+    
+    function updateCarousel() {
+        images.forEach((img, index) => {
+            img.classList.toggle('active', index === currentIndex);
+        });
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentIndex);
+        });
+    }
+    
+    function nextImage() {
+        currentIndex = (currentIndex + 1) % totalImages;
+        updateCarousel();
+    }
+    
+    function goToImage(index) {
+        currentIndex = index;
+        updateCarousel();
+        // Reset auto-play timer when manually navigating
+        resetAutoPlay();
+    }
+    
+    function startAutoPlay() {
+        autoPlayInterval = setInterval(nextImage, pauseDuration);
+    }
+    
+    function stopAutoPlay() {
+        if (autoPlayInterval) {
+            clearInterval(autoPlayInterval);
+            autoPlayInterval = null;
+        }
+    }
+    
+    function resetAutoPlay() {
+        stopAutoPlay();
+        startAutoPlay();
+    }
+    
+    // Initialize
+    updateCarousel();
+    startAutoPlay();
+    
+    // Pause on hover, resume on leave
+    galleryCarousel.addEventListener('mouseenter', stopAutoPlay);
+    galleryCarousel.addEventListener('mouseleave', startAutoPlay);
+    
+    // Dot navigation
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => goToImage(index));
+    });
+    
+    // Keyboard navigation
+    galleryCarousel.setAttribute('tabindex', '0');
+    galleryCarousel.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') {
+            currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+            updateCarousel();
+            resetAutoPlay();
+        }
+        if (e.key === 'ArrowRight') {
+            nextImage();
+            resetAutoPlay();
+        }
+    });
+})();

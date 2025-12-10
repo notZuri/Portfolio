@@ -1,0 +1,505 @@
+/* OJT Experience Section styles */
+.ojt {
+    padding: 5rem 0;
+    background-color: var(--surface-color);
+}
+.ojt-position {
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+    letter-spacing: 0.02em;
+}
+.ojt-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    align-items: start;
+    margin-bottom: 3rem;
+}
+.ojt-text {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+.ojt-description {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--text-color);
+    opacity: 0.9;
+}
+.ojt-responsibilities {
+    margin-top: 1rem;
+}
+.ojt-responsibilities h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    letter-spacing: 0.02em;
+}
+.responsibilities-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+.responsibilities-list li {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--text-color);
+    opacity: 0.85;
+    padding-left: 1.5rem;
+    position: relative;
+}
+.responsibilities-list li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+    font-weight: 700;
+}
+.ojt-gallery {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+.ojt-gallery h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.02em;
+}
+.ojt-gallery-carousel {
+    position: relative;
+    width: 100%;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow:
+      4px 4px 16px var(--neu-shadow-dark),
+      -4px -4px 16px var(--neu-shadow-light),
+      inset 1px 1px 3px var(--neu-shadow-inner-dark),
+      inset -1px -1px 3px var(--neu-shadow-inner-light);
+    background: var(--bg-color);
+    border: 1.5px solid var(--border-color);
+    min-height: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.ojt-gallery-carousel-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.ojt-gallery-carousel-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+    display: block;
+    padding: 1.5rem;
+    box-sizing: border-box;
+}
+.ojt-gallery-carousel-image.active {
+    opacity: 1;
+    z-index: 1;
+}
+.ojt-gallery-carousel-indicators {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.5rem;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+}
+.ojt-gallery-carousel-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(107, 114, 128, 0.6);
+    border: 2px solid rgba(107, 114, 128, 0.8);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow:
+      1px 1px 2px rgba(0, 0, 0, 0.2),
+      -1px -1px 2px rgba(255, 255, 255, 0.1);
+}
+[data-theme="dark"] .ojt-gallery-carousel-dot {
+    background: rgba(156, 163, 175, 0.5);
+    border-color: rgba(156, 163, 175, 0.7);
+    box-shadow:
+      1px 1px 2px rgba(0, 0, 0, 0.4),
+      -1px -1px 2px rgba(255, 255, 255, 0.05);
+}
+.ojt-gallery-carousel-dot.active {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+    transform: scale(1.3);
+    box-shadow: 0 2px 6px rgba(37,99,235,0.4);
+}
+.ojt-gallery-carousel-dot:hover {
+    background: var(--primary-color);
+    transform: scale(1.2);
+    border-color: var(--primary-color);
+}
+@media (max-width: 600px) {
+    .ojt-gallery-carousel {
+        min-height: 280px;
+    }
+    .ojt-gallery-carousel-container {
+        min-height: 280px;
+    }
+    .ojt-gallery-carousel-image {
+        padding: 1rem;
+    }
+    .ojt-gallery-carousel-indicators {
+        bottom: 0.75rem;
+        padding: 0.4rem 0.8rem;
+    }
+    .ojt-gallery-carousel-dot {
+        width: 8px;
+        height: 8px;
+    }
+}
+.ojt-project {
+    background: var(--bg-color);
+    border-radius: 16px;
+    box-shadow:
+      4px 4px 16px var(--neu-shadow-dark),
+      -4px -4px 16px var(--neu-shadow-light),
+      inset 1.5px 1.5px 4px var(--neu-shadow-inner-dark),
+      inset -1.5px -1.5px 4px var(--neu-shadow-inner-light);
+    padding: 2rem;
+    border: 1.5px solid var(--border-color);
+    transition: var(--transition);
+    margin-top: 2rem;
+    overflow: hidden;
+}
+.ojt-project-carousel {
+    position: relative;
+    width: 100%;
+    margin-bottom: 1.5rem;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow:
+      4px 4px 16px var(--neu-shadow-dark),
+      -4px -4px 16px var(--neu-shadow-light),
+      inset 1px 1px 3px var(--neu-shadow-inner-dark),
+      inset -1px -1px 3px var(--neu-shadow-inner-light);
+    background: var(--bg-color);
+    border: 1px solid var(--border-color);
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: none;
+}
+.ojt-project-carousel:hover {
+    border-color: var(--border-color);
+    box-shadow:
+      4px 4px 16px var(--neu-shadow-dark),
+      -4px -4px 16px var(--neu-shadow-light),
+      inset 1px 1px 3px var(--neu-shadow-inner-dark),
+      inset -1px -1px 3px var(--neu-shadow-inner-light);
+}
+.ojt-carousel-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.ojt-carousel-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    display: block;
+    padding: 1.5rem;
+    box-sizing: border-box;
+}
+.ojt-carousel-image.active {
+    opacity: 1;
+    z-index: 1;
+}
+.ojt-carousel-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(37, 99, 235, 0.9);
+    border: none;
+    color: var(--bg-color);
+    font-size: 1.5rem;
+    padding: 0.75rem 1rem;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.2s ease;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+.ojt-carousel-nav:hover {
+    background: var(--primary-color);
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 6px 16px rgba(37,99,235,0.4);
+}
+.ojt-carousel-prev {
+    left: 1rem;
+}
+.ojt-carousel-next {
+    right: 1rem;
+}
+.ojt-carousel-counter {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    background: rgba(37, 99, 235, 0.9);
+    color: var(--bg-color);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    z-index: 10;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.ojt-carousel-indicators {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.5rem;
+    z-index: 10;
+}
+.ojt-carousel-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(107, 114, 128, 0.6);
+    border: 2px solid rgba(107, 114, 128, 0.8);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow:
+      2px 2px 4px rgba(0, 0, 0, 0.2),
+      -1px -1px 2px rgba(255, 255, 255, 0.1);
+}
+[data-theme="dark"] .ojt-carousel-dot {
+    background: rgba(156, 163, 175, 0.5);
+    border-color: rgba(156, 163, 175, 0.7);
+    box-shadow:
+      2px 2px 4px rgba(0, 0, 0, 0.4),
+      -1px -1px 2px rgba(255, 255, 255, 0.05);
+}
+.ojt-carousel-dot.active {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+    transform: scale(1.2);
+    box-shadow: 0 2px 8px rgba(37,99,235,0.3);
+}
+.ojt-carousel-dot:hover {
+    background: var(--primary-color);
+    transform: scale(1.1);
+    border-color: var(--primary-color);
+}
+@media (max-width: 600px) {
+    .ojt-project-carousel {
+        min-height: 350px;
+    }
+    .ojt-carousel-container {
+        min-height: 350px;
+    }
+    .ojt-carousel-image {
+        padding: 1rem;
+    }
+    .ojt-carousel-nav {
+        width: 35px;
+        height: 35px;
+        font-size: 1.2rem;
+        padding: 0.5rem;
+    }
+    .ojt-carousel-prev {
+        left: 0.5rem;
+    }
+    .ojt-carousel-next {
+        right: 0.5rem;
+    }
+    .ojt-carousel-counter {
+        bottom: 0.75rem;
+        right: 0.75rem;
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
+    }
+    .ojt-carousel-indicators {
+        bottom: 0.75rem;
+    }
+    .ojt-carousel-dot {
+        width: 10px;
+        height: 10px;
+    }
+}
+.ojt-project:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(37, 99, 235, 0.13);
+    border-color: var(--primary-color);
+}
+.ojt-project h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    letter-spacing: 0.02em;
+}
+.ojt-project-description {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--text-color);
+    opacity: 0.85;
+    margin-bottom: 1.5rem;
+}
+.ojt-project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+.ojt-project-tech .tech-tag {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--bg-color);
+    border: none;
+    border-radius: 25px;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(37,99,235,0.2);
+    transition: all 0.2s ease;
+}
+.ojt-project-tech .tech-tag:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(37,99,235,0.3);
+}
+.ojt-project-links {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+.ojt-project-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.6rem 1rem;
+    background-color: var(--primary-color);
+    color: var(--bg-color);
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: var(--transition);
+    flex: none;
+    width: auto;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(37,99,235,0.15);
+}
+.ojt-project-link:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(107, 114, 128, 0.2);
+}
+.ojt-project-link.live {
+    background-color: var(--primary-color);
+    color: var(--bg-color);
+}
+.ojt-project-link.live:hover {
+    background-color: var(--secondary-color);
+    color: var(--bg-color);
+}
+@media (max-width: 600px) {
+    .ojt-project-links {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    .ojt-project-link {
+        width: 100%;
+        flex: 1;
+        padding: 0.75rem 1rem;
+        font-size: 0.9rem;
+        justify-content: center;
+        box-sizing: border-box;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+    }
+}
+@media (max-width: 900px) {
+    .ojt-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    .ojt-gallery {
+        order: -1;
+    }
+}
+@media (max-width: 600px) {
+    .ojt {
+        padding: 3rem 0;
+    }
+    .ojt-position {
+        font-size: 1.1rem;
+        margin-bottom: 1.5rem;
+    }
+    .ojt-content {
+        gap: 1.5rem;
+    }
+    .ojt-description {
+        font-size: 1rem;
+    }
+    .ojt-responsibilities h3,
+    .ojt-gallery h3 {
+        font-size: 1.2rem;
+    }
+    .responsibilities-list li {
+        font-size: 0.95rem;
+        padding-left: 1.25rem;
+    }
+    .ojt-project {
+        padding: 1.5rem;
+        margin-top: 1.5rem;
+    }
+    .ojt-project h3 {
+        font-size: 1.3rem;
+    }
+    .ojt-project-description {
+        font-size: 1rem;
+    }
+}
+

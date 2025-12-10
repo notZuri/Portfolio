@@ -130,6 +130,70 @@
 .about, .skills, .projects, .contact {
     background-color: var(--surface-color);
 } 
+.about-interests {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 2px solid var(--border-color);
+}
+.about-interests h3 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: 2rem;
+    text-align: center;
+    letter-spacing: 0.02em;
+}
+.about-interests .interests-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+    justify-items: center;
+}
+.about-interests .interest-card {
+    background: var(--bg-color);
+    border-radius: 16px;
+    box-shadow:
+      4px 4px 16px var(--neu-shadow-dark),
+      -4px -4px 16px var(--neu-shadow-light),
+      inset 1.5px 1.5px 4px var(--neu-shadow-inner-dark),
+      inset -1.5px -1.5px 4px var(--neu-shadow-inner-light);
+    padding: 2rem 1.5rem 1.5rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: box-shadow 0.2s, transform 0.2s;
+    border: 1.5px solid var(--border-color);
+    min-width: 180px;
+    max-width: 320px;
+    width: 100%;
+}
+.about-interests .interest-card:hover {
+    box-shadow: 0 12px 32px rgba(37,99,235,0.13);
+    transform: translateY(-6px) scale(1.03);
+    border-color: var(--primary-color);
+}
+.about-interests .interest-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    filter: drop-shadow(0 2px 8px rgba(37,99,235,0.10));
+    transition: transform 0.2s;
+}
+.about-interests .interest-card:hover .interest-icon {
+    transform: scale(1.15) rotate(-8deg);
+}
+.about-interests .interest-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+.about-interests .interest-desc {
+    font-size: 1rem;
+    color: var(--text-color);
+    opacity: 0.85;
+    text-align: center;
+}
 
 @media (max-width: 600px) {
   .about {
@@ -172,5 +236,37 @@
   }
   .highlight-label {
     font-size: 0.8rem;
+  }
+  .about-interests {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+  }
+  .about-interests h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .about-interests .interests-grid {
+    gap: 1.2rem;
+  }
+  .about-interests .interest-card {
+    padding: 1.2rem 0.7rem 1rem 0.7rem;
+    min-width: 0;
+    max-width: 100%;
+    width: 100%;
+    height: 180px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .about-interests .interest-icon {
+    font-size: 2rem;
+  }
+  .about-interests .interest-title {
+    font-size: 1rem;
+  }
+  .about-interests .interest-desc {
+    font-size: 0.95rem;
   }
 } 
